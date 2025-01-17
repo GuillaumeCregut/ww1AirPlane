@@ -42,14 +42,6 @@ final class BuilderController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_builder_show', methods: ['GET'])]
-    public function show(Builder $builder): Response
-    {
-        return $this->render('builder/show.html.twig', [
-            'builder' => $builder,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_builder_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Builder $builder, EntityManagerInterface $entityManager): Response
     {

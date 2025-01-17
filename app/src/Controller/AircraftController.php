@@ -42,14 +42,6 @@ final class AircraftController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_aircraft_show', methods: ['GET'])]
-    public function show(Aircraft $aircraft): Response
-    {
-        return $this->render('aircraft/show.html.twig', [
-            'aircraft' => $aircraft,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_aircraft_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Aircraft $aircraft, EntityManagerInterface $entityManager): Response
     {

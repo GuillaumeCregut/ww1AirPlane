@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Builder{% endblock %}
+
+{% block body %}
+    <h1>Edit Builder</h1>
+
+    {{ include('builder/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_builder_index') }}">back to list</a>
+
+    {{ include('builder/_delete_form.html.twig') }}
+{% endblock %}

@@ -41,15 +41,7 @@ final class YearsController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    #[Route('/{id}', name: 'app_years_show', methods: ['GET'])]
-    public function show(Years $year): Response
-    {
-        return $this->render('years/show.html.twig', [
-            'year' => $year,
-        ]);
-    }
-
+    
     #[Route('/{id}/edit', name: 'app_years_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Years $year, EntityManagerInterface $entityManager): Response
     {

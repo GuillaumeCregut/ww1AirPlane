@@ -1,0 +1,44 @@
+services:
+  database:
+    container_name: ww1AirplaneDB
+    image: mysql:8.0
+    env_file: ".env"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT}
+      MYSQL_DATABASE: ww1Airplane
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 5306:3306
+    restart: always
+  php:
+    container_name: ww1AirplanePHP
+    build:
+      context: ./docker
+    ports:
+      - 8082:80
+      - 8444:443
+    volumes:
+      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache/default-ssl.conf:/etc/apache2/sites-enabled/000-default-ssl.conf
+      - ./etc/ssl:/etc/ssl
+      - ./app:/var/www
+    depends_on:
+      - database
+    restart: always
+  phpma:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadminWW1
+    env_file: ".env"
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT}
+      UPLOAD_LIMIT: 20M
+    ports:
+      - 8899:80
+    depends_on:
+      - database

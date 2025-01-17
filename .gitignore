@@ -1,0 +1,6 @@
+/notes/
+/.env
+/mysql/*
+!/mysql/.gitkeep
+*.csr
+*.code*

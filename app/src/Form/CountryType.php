@@ -6,13 +6,22 @@ use App\Entity\Country;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CountryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class,[
+                'label' => 'Nom : ',
+                'attr' =>[
+                    'class' => 'field-input',    
+                ],
+                'row_attr' =>[
+                    'class' => 'field'
+                ] 
+            ])
         ;
     }
 

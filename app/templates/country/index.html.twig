@@ -1,26 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Country index{% endblock %}
+{% block title %}Pays{% endblock %}
 
 {% block body %}
-    <h1>Country index</h1>
-
+    <h1>Pays</h1>
+    <div class="header-btn">
+        <a href="{{ path('app_country_new') }}"  class="btn btn-primary">Nouveau</a>
+     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th class="global-cell">Name</th>
+                <th class="global-cell">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for country in countries %}
             <tr>
-                <td>{{ country.id }}</td>
-                <td>{{ country.name }}</td>
-                <td>
-                    <a href="{{ path('app_country_show', {'id': country.id}) }}">show</a>
-                    <a href="{{ path('app_country_edit', {'id': country.id}) }}">edit</a>
+                <td class="global-cell">{{ country.name }}</td>
+                <td class="global-cell">
+                    <div class="action-container">
+                        {{ include('country/_delete_form.html.twig') }}
+                        <a href="{{ path('app_country_edit', {'id': country.id}) }}" class="btn btn-primary">editer</a>
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -30,6 +32,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_country_new') }}">Create new</a>
 {% endblock %}

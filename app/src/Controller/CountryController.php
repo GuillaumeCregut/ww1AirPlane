@@ -42,14 +42,6 @@ final class CountryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_country_show', methods: ['GET'])]
-    public function show(Country $country): Response
-    {
-        return $this->render('country/show.html.twig', [
-            'country' => $country,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_country_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Country $country, EntityManagerInterface $entityManager): Response
     {

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Constructeur - Modifier{% endblock %}
+
+{% block body %}
+    <h1>Modifier un constructeur</h1>
+
+    {{ include('builder/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    {{ include('builder/_delete_form.html.twig') }}
+    <a href="{{ path('app_builder_index') }}">Retour</a>
+
+{% endblock %}

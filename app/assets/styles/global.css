@@ -1,0 +1,104 @@
+:root {
+    --main-color: #FFFFFF;
+    --second-color: #125369;
+    --background-color: #D3F1FC;
+    --main-font-color: #FFFFFF;
+    --second-font-color: #353535;
+    --third-color: #BCA5FF;
+    --ok-color: #1F9C06;
+    --error-color: #BC0404;
+    --main-font: "Roboto";
+    --main-font-size: 1rem;
+    --main-font-weight: 400;
+    --menu-width: 230px;
+    --accepted:#1F9C06;
+    --refused:#f58171;
+    --outdated:#BC0404;
+    --await:white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    color: black;
+    text-decoration: none;
+}
+nav {
+    width: 50%;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    gap: 3rem;
+}
+
+.global-cell {
+    padding: 1rem;
+}
+
+.header-btn {
+    margin: 1rem 0;
+}
+
+.field {
+    margin: 1rem 0;
+}
+
+.field-input {
+    margin-left: 0.5rem;
+}
+
+.btn, .small-btn {
+    margin: 0.25rem .125rem;
+    border : 1px solid black;
+    border-radius: 0.375rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.btn-primary {
+    color : #0d6efd;
+    border-color: #0d6efd;
+}
+
+
+.btn-primary:hover {
+    color : var(--main-color);
+    background-color: #0d6efd;
+}
+
+.btn-danger {
+    color : var(--error-color);
+    border-color:  var(--error-color);
+}
+
+.btn-danger:hover {
+    color : var(--main-color);
+    background-color: var(--error-color);
+}
+
+.btn-classic {
+    color : var(--second-font-color);
+    border-color: var(--second-color);
+    background-color: var(--background-color);
+}
+
+.btn-classic:hover {
+    color : var(--main-color);
+    border-color: var(--second-color);
+    background-color: var(--second-color);
+}
+
+.action-container {
+    display: flex;
+    gap: 1rem
+}

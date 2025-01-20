@@ -7,7 +7,7 @@ RUN apt-get update \
     && docker-php-ext-enable apcu \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
-
+RUN update-ca-certificates
 RUN docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
     && docker-php-ext-install  gd \
     && docker-php-ext-install exif
@@ -21,13 +21,12 @@ RUN ls -la
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN curl -sS https://getcomposer.org/installer | php -- --disable-tls &&\
     mv composer.phar /usr/local/bin/composer
-RUN update-ca-certificates
+
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 RUN composer update
 RUN composer dump-env prod
 RUN composer install --no-dev --optimize-autoloader
 RUN symfony console cache:clear
-RUN symfony console importmap:install
 RUN php bin/console asset-map:compile
 

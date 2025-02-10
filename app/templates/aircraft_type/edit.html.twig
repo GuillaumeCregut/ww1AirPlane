@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit un type{% endblock %}
+
+{% block body %}
+    <h1>Editer un type d'avion</h1>
+
+    {{ include('aircraft_type/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('aircraft_type/_delete_form.html.twig') }}
+    <a href="{{ path('app_aircraft_type_index') }}">Retour</a>
+
+{% endblock %}

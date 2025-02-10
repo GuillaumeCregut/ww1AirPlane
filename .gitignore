@@ -4,3 +4,7 @@
 !/mysql/.gitkeep
 *.csr
 *.code*
+/app/public/uploads/*
+!/app/public/uploads/.gitignore
+/uploads/*
+!/uploads/.gitignore

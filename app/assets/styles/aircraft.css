@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.link-aicraft:hover {
+    color : blue;
+    text-decoration: underline;
+}
+
+.aircraft-picture {
+    width: 100%;
+    height: auto;
+}
+
+.picture_container {
+    margin: 1rem auto;
+    width: 400px;
+}
+
+.description_container {
+    margin-top: 1rem;
+}
+
+.info-line{
+    margin-top: 0.5rem;
+}
+
+.aircraft_type_item {
+    margin-left: 0.5rem;
+}
+
+.btn-container {
+    margin-top: 1.5rem;
+}

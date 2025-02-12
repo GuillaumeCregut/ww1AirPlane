@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avion - Edition{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/aircraft.css')}}">
+{% endblock %}
+{% block body %}
+    <h1>Fiche avion : {{aircraft.name}}</h1>
+    <div class="picture_container">
+        <img src="/uploads/{{aircraft.picture}}" alt="" class="aircraft-picture">
+    </div>
+    <div class="description_container">
+        <p class="info-line">Nom : {{aircraft.name}}</p>
+        <p class="info-line">Constructeur : {{ aircraft.builder.name }}</p>
+        <div class="info-line"><p>Type d'avion</p>
+            <ul>
+                {% for typeAircraft in aircraft.type %}
+                    <li class="aircraft_type_item">- {{typeAircraft.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <p class="info-line">Date d'entrée en service : {{ aircraft.fullDateIn ? aircraft.fullDateIn|date('d/m/Y') : '' }}<p>
+        <p class="info-line">Année de mise en service : {{ aircraft.dateIn.name}}</p>
+        <p class="info-line">Date de retrait : {{ aircraft.fullDateOut ? aircraft.fullDateOut|date('d/m/Y') : '' }}<p>
+        <p class="info-line">Année de retrait :  {{ aircraft.yearOut.name}}</p>
+    </div>
+    <p class="btn-container"><a href="{{path('app_aircraft_index')}}" class="btn btn-primary">Retour</a></p>
+{% endblock %}

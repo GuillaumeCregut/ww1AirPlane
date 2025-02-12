@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Avion - Ajout{% endblock %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/aircraft_form.css')}}">
+{% endblock %}
 {% block body %}
     <h1>Ajouter un avion</h1>
 

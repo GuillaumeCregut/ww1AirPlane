@@ -5,11 +5,15 @@ namespace App\Form;
 use App\Entity\Years;
 use App\Entity\Builder;
 use App\Entity\Aircraft;
+use App\Entity\AircraftType as aircraftTypeEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AircraftType extends AbstractType
 {
@@ -18,6 +22,54 @@ class AircraftType extends AbstractType
         $builder
             ->add('name', TextType::class,[
                 'label' => 'Nom : ',
+                'attr' =>[
+                    'class' => 'field-input form-control',    
+                ],
+                'row_attr' =>[
+                    'class' => 'field'
+                ] 
+            ])
+            ->add('description', TextareaType::class,[
+                'label' => 'Description : ',
+                'attr' =>[
+                    'class' => 'form-text',    
+                ],
+                'row_attr' =>[
+                    'class' => 'field'
+                ] 
+            ])
+            ->add('picture', FileType::class,[
+                'label' => 'Photo : ',
+                'label_attr' =>[
+                    'class' =>'drop-container',
+                    'data-aircraft-target'=> 'dropcontainer'
+                ],
+                "mapped" => false,
+                'data_class' => null,
+                'attr' =>[
+                    'class' => 'file-field',    
+                ],
+                'required' => false,
+                'row_attr' =>[
+                    'class' => 'field'
+                ], 
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                       'mimeTypesMessage' => 'Merci de choisir un fichier image (jpeg ou png) de moins de 1Mo.',
+                    ])
+                ]
+            ])
+            ->add('type', EntityType::class, [
+                'class' => AircraftTypeEntity::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => "Type d'avion :",
                 'attr' =>[
                     'class' => 'field-input',    
                 ],
@@ -40,7 +92,7 @@ class AircraftType extends AbstractType
                 'widget' => 'single_text',
                 'label' => 'Date de mise en service : ',
                 'attr' =>[
-                    'class' => 'field-input',    
+                    'class' => 'field-input form-control',    
                 ],
                 'row_attr' =>[
                     'class' => 'field'
@@ -50,7 +102,7 @@ class AircraftType extends AbstractType
                 'widget' => 'single_text',
                 'label' => 'Date de retrait : ',
                 'attr' =>[
-                    'class' => 'field-input',    
+                    'class' => 'field-input  form-control',    
                 ],
                 'row_attr' =>[
                     'class' => 'field'

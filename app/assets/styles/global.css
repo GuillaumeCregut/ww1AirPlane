@@ -25,6 +25,10 @@
     color: black;
     text-decoration: none;
 }
+
+body {
+    margin: 1rem;
+}
 nav {
     width: 50%;
     margin: 0 auto;
@@ -45,6 +49,21 @@ nav ul {
 
 .field {
     margin: 1rem 0;
+}
+
+.form-control {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: none;
+    margin-left: 1rem;
+}
+
+.form-text {
+    margin-top: 1rem;
+    width: 50ch;
+    height: 4rem;
+    padding : 0.5rem;
 }
 
 .field-input {

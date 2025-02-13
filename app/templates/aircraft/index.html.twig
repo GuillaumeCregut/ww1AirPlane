@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Avions{% endblock %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/aircraft.css')}}">
+{% endblock %}
 {% block body %}
     <h1>Avions</h1>
     <div class="header-btn">
@@ -12,6 +14,7 @@
             <tr>
                 <th class="global-cell">Nom</th>
                 <th class="global-cell">Constructeur</th>
+                <th class="global-cell">Type d'avion</th>
                 <th class="global-cell">date de mise en service</th>
                 <th class="global-cell">date de retrait</th>
                 <th class="global-cell">actions</th>
@@ -20,8 +23,13 @@
         <tbody>
         {% for aircraft in aircraft %}
             <tr>
-                <td class="global-cell">{{ aircraft.name }}</td>
+                <td class="global-cell"><a href="{{path('app_aircraft_show', {id: aircraft.id})}}" class="link-aicraft">{{ aircraft.name }}</a></td>
                 <td class="global-cell">{{ aircraft.builder.name }}</td>
+                <td>
+                    {% for typeAircraft in aircraft.type %}
+                        <span class="aircraft-type">{{typeAircraft.name}}</span>
+                    {% endfor %}
+                </td>
                 <td class="global-cell">{{ aircraft.fullDateIn ? aircraft.fullDateIn|date('d/m/Y') : '' }}</td>
                 <td class="global-cell">{{ aircraft.fullDateOut ? aircraft.fullDateOut|date('d/m/Y') : '' }}</td>
                 <td class="global-cell">

@@ -1,4 +1,35 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+{{form_row(form.name)}}
+{{form_row(form.description)}}
+<div {{ stimulus_controller('aircraft')}}>
+	<p>Photo : </p>
+	<label class="drop-container" data-aircraft-target="dropcontainer" for="aircraft_picture">
+	<span class="drop-title">Déposer des images ici</span>
+	ou
+	{{form_widget(form.picture, {
+            attr: {
+               'data-action': 'change->aircraft#changeFile',
+               'data-aircraft-target': 'fileLoader'
+            }
+        })}}
+	</label>
+	<div class="picture_container" {{ stimulus_target('aircraft','picturePreview') }}></div>
+</div>
+<div class="typeAircraft">
+	{{form_label(form.type)}}
+	<div class="cb_container">
+		{% for checkbox in form.type.children %}
+			<div class="cb_item">
+				{{ form_widget(checkbox) }}
+				{{ form_label(checkbox) }}
+				{{ form_errors(checkbox) }}
+			</div>
+
+		{% endfor %}
+	</div>
+</div>
+{{ form_widget(form) }}
+
+
+<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

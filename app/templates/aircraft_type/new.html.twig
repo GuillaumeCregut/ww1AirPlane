@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type - Ajout{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un nouveau type</h1>
+
+    {{ include('aircraft_type/_form.html.twig') }}
+
+    <a href="{{ path('app_aircraft_type_index') }}">Retour</a>
+{% endblock %}

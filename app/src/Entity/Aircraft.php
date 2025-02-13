@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AircraftRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,24 @@ class Aircraft
     #[ORM\ManyToOne(inversedBy: 'aircraft')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Builder $builder = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picture = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    /**
+     * @var Collection<int, AircraftType>
+     */
+    #[ORM\ManyToMany(targetEntity: AircraftType::class, inversedBy: 'aircraft')]
+    private Collection $type;
+
+    public function __construct()
+    {
+        $this->type = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -111,4 +131,52 @@ class Aircraft
 
         return $this;
     }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): static
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+  /**
+   * @return Collection<int, AircraftType>
+   */
+  public function getType(): Collection
+  {
+      return $this->type;
+  }
+
+  public function addType(AircraftType $type): static
+  {
+      if (!$this->type->contains($type)) {
+          $this->type->add($type);
+      }
+
+      return $this;
+  }
+
+  public function removeType(AircraftType $type): static
+  {
+      $this->type->removeElement($type);
+
+      return $this;
+  }
 }

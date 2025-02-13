@@ -25,7 +25,7 @@ services:
       - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./apache/default-ssl.conf:/etc/apache2/sites-enabled/000-default-ssl.conf
       - ./etc/ssl:/etc/ssl
-      - ./app:/var/www
+      - ./uploads:/var/www/public/uploads
     depends_on:
       - database
     restart: always

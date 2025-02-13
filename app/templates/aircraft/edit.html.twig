@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Avion - Edition{% endblock %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/aircraft_form.css')}}">
+    <link rel="stylesheet" href="{{asset('styles/aircraft.css')}}">
+{% endblock %}
 {% block body %}
     <h1>Editer un avion</h1>
-
+    {% if aircraft.picture %}
+    <img src="/uploads/{{aircraft.picture}}" alt="" class="aircraft-picture">
+    {% endif %}
     {{ include('aircraft/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     {{ include('aircraft/_delete_form.html.twig') }}
 

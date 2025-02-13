@@ -1,0 +1,75 @@
+.file-field {
+    color: #222245;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #222245;
+    width: 350px;
+    max-width: 100%;
+}
+
+.file-field:focus {
+    outline: 2px dashed #222245;
+    outline-offset: 2px;
+}
+
+.file-field::file-selector-button {
+    margin-right: 8px;
+    border: none;
+    background: #222245;
+    padding: 8px 12px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.file-field::file-selector-button:hover {
+    background: #4747b8;
+}
+
+.drop-container {
+    position: relative;
+    margin: 1rem 0;
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+  }
+
+  .picture_container {
+    max-width: 120px;
+    margin-left: 2rem;
+}
+  
+  .drop-container:hover {
+    background: #eee;
+    border-color: #111;
+  }
+
+.preview {
+    width: 100%;
+    height: auto;
+
+}
+
+.typeAircraft {
+    margin-top: 0.5rem;
+}
+
+.cb_container {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.cb_item {
+    margin-left: 1rem;
+}

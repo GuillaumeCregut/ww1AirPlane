@@ -49,6 +49,12 @@ class Aircraft
     #[ORM\ManyToMany(targetEntity: AircraftType::class, inversedBy: 'aircraft')]
     private Collection $type;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $nbWings = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nbSeats = null;
+
     public function __construct()
     {
         $this->type = new ArrayCollection();
@@ -176,6 +182,30 @@ class Aircraft
   public function removeType(AircraftType $type): static
   {
       $this->type->removeElement($type);
+
+      return $this;
+  }
+
+  public function getNbWings(): ?int
+  {
+      return $this->nbWings;
+  }
+
+  public function setNbWings(?int $nbWings): static
+  {
+      $this->nbWings = $nbWings;
+
+      return $this;
+  }
+
+  public function getNbSeats(): ?int
+  {
+      return $this->nbSeats;
+  }
+
+  public function setNbSeats(?int $nbSeats): static
+  {
+      $this->nbSeats = $nbSeats;
 
       return $this;
   }

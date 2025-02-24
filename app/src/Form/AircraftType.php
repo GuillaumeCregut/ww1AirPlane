@@ -9,6 +9,7 @@ use App\Entity\AircraftType as aircraftTypeEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -69,6 +70,7 @@ class AircraftType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
+                'required' => true,
                 'label' => "Type d'avion :",
                 'attr' =>[
                     'class' => 'field-input',    
@@ -76,6 +78,37 @@ class AircraftType extends AbstractType
                 'row_attr' =>[
                     'class' => 'field'
                 ] 
+            ])
+            ->add('nbSeats', ChoiceType::class,[
+                'choices' =>[
+                    '1'=>1,
+                    '2'=>2,
+                    '3'=>3,
+                    'Plus'=>4,
+                ], 
+                'required' => true,
+                'mapped' => false,
+                'label'=>'Nombre déquipage',
+                'expanded' => true,
+                'multiple' => false,
+                'row_attr' =>[
+                    'class' => 'field',    
+                ],
+            ])
+            ->add('nbWings', ChoiceType::class,[
+                'choices' =>[
+                    'Monoplan'=>1,
+                    'Biplan'=>2,
+                    'Triplan'=>3,
+                ], 
+                'required' => true,
+                'mapped' => false,
+                'label'=>'Ailes',
+                'expanded' => true,
+                'multiple' => false,
+                'row_attr' =>[
+                    'class' => 'field',    
+                ],
             ])
             ->add('builder', EntityType::class, [
                 'class' => Builder::class,

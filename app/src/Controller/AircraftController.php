@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/aircraft', name:"app_aircraft_")]
+#[Route('/aircraft', name: "app_aircraft_")]
 final class AircraftController extends AbstractController
 {
     #[Route(name: 'index', methods: ['GET'])]
@@ -47,6 +47,10 @@ final class AircraftController extends AbstractController
                     dd('erreur ici', $fileName);
                 }
             }
+            $nbWings = $picture = $form->get('nbWings')->getData();
+            $nbSeats = $form->get('nbSeats')->getData();
+            $aircraft->setNbWings($nbWings);
+            $aircraft->setNbSeats($nbSeats);
             $entityManager->persist($aircraft);
             $entityManager->flush();
             return $this->redirectToRoute('app_aircraft_index', [], Response::HTTP_SEE_OTHER);
